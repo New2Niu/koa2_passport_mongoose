@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2016-10-19 10:10:28
 * @Last Modified by:   Administrator
-* @Last Modified time: 2016-10-19 18:40:24
+* @Last Modified time: 2016-10-20 14:50:38
 * @function:
 */
 
@@ -21,12 +21,10 @@ export default (passport)=>{
   })
 
   passport.serializeUser(function(user, done) {
-    console.log('se:',user)
     done(null, user);
   });
 
   passport.deserializeUser(function(obj, done) {
-    console.log('de:',obj);
     done(null, obj);
   });
 
