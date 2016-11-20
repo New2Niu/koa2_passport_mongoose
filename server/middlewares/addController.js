@@ -3,7 +3,7 @@
 * @Date:   2016-10-02 23:43:27
 * @Last Modified by:   Administrator
 * @Last Modified time: 2016-10-19 14:01:26
-* @function:加载route
+* @function:加载.js文件中的route  路由定义规则 'method path' 例:'GET /login'
 */
 
 'use strict';

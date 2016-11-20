@@ -7,10 +7,15 @@
 
 'use strict';
 import passport from 'koa-passport';
+import send from 'koa-send';
+import fs from 'fs';
+import path from 'path';
+
 const index = async (ctx,next)=>{
+	//await send(ctx,'index.html',{root:'public/index'}); ${ctx.csrf}
 	ctx.body=`
-		<form action='/login' method='POST'>
-			<input type="hidden" name="_csrf" value="${ctx.csrf}" />
+		<form action='/logini' method='POST'>
+			<input type="hidden" name="_csrf" value="" />
 			<label for='username'>用户名:</label>
 			<input id='username' type='text' name='username'/>
 			<label for='password'>密码:</label>
@@ -36,7 +41,7 @@ const logout = async (ctx,next)=>{
 }
 
 export default {
-	'GET /':index,
+	'GET /logini':index,
 	'GET /app':app,
-	'GET /logout':logout
+	'GET /logout':logout,
 }

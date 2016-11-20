@@ -21,15 +21,18 @@ export default (passport)=>{
   })
 
   passport.serializeUser(function(user, done) {
+    console.log('user',user);
     done(null, user);
   });
 
   passport.deserializeUser(function(obj, done) {
+    console.log('obj',obj)
     done(null, obj);
   });
 
   const LocalStrategy = require('passport-local').Strategy
   passport.use(new LocalStrategy(function(username, password, done) {
+    console.log('balabala')
     User.findOne({ username: username, password: password }, done);
   }));
 
