@@ -19,7 +19,6 @@ import addController from './addController';
 import koaCors from 'koa-cors';
 import CSRF from 'koa-csrf';
 import koaStatic from 'koa-static';
-import history from 'koa-connect-history-api-fallback';
 
 export default (app)=>{
     

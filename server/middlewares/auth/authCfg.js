@@ -9,6 +9,7 @@
 import User from '../../models/User.js';
 import {GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET} from '../../config';
 export default (passport)=>{
+  /********添加测试用户 start*********/
   User.findOne({ username: 'test' }, function (err, testUser) {
     if (!testUser) {
       console.log('test user did not exist; creating test user...')
@@ -19,7 +20,9 @@ export default (passport)=>{
       testUser.save();
     }
   })
+  /********添加测试用户 end*********/
 
+  //session 序列化和反序列化
   passport.serializeUser(function(user, done) {
     console.log('user',user);
     done(null, user);
@@ -30,13 +33,14 @@ export default (passport)=>{
     done(null, obj);
   });
 
+  //本地验证
   const LocalStrategy = require('passport-local').Strategy
   passport.use(new LocalStrategy(function(username, password, done) {
     console.log('balabala')
     User.findOne({ username: username, password: password }, done);
   }));
 
-
+  //git
   const GitHubStrategy = require('passport-github2').Strategy;
   passport.use(new GitHubStrategy({
       clientID: GITHUB_CLIENT_ID,
